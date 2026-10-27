@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827"><title>Rana Ads Tracking</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(145deg,#101827,#172b46);font-family:Inter,system-ui,Arial,sans-serif;color:#fff;padding:20px}.card{width:min(100%,440px);padding:28px 22px;border:1px solid #ffffff24;border-radius:24px;background:#ffffff0d;box-shadow:0 18px 60px #0005;text-align:center}.logo{font-size:42px}.muted{color:#bac8da;line-height:1.6}.pill{display:inline-block;border:1px solid #ffffff26;padding:6px 10px;border-radius:999px;color:#a9d6ff;font-size:12px}.join{display:block;margin-top:22px;background:#229ed9;color:white;text-decoration:none;font-weight:800;padding:16px;border-radius:14px}.small{font-size:12px;color:#9eafc4;margin-top:18px}
+  </style>
+</head>
+<body><main class="card"><div class="logo">📊</div><span class="pill">RANA ADS TRACKING</span><h1 id="title">Telegram Channel</h1><p class="muted" id="desc">Channel updates aur learning ke liye Telegram par join karein.</p><a id="join" class="join" href="#">✈️ Join Telegram Channel</a><p class="small">Tracking events are used to measure page visits and button clicks.</p></main>
+<script>
+(function(){
+  const qs=new URLSearchParams(location.search);
+  const slug=qs.get('slug')||'demo';
+  const params={channel_slug:slug,utm_source:qs.get('utm_source'),utm_medium:qs.get('utm_medium'),utm_campaign:qs.get('utm_campaign'),utm_content:qs.get('utm_content'),utm_term:qs.get('utm_term'),fbclid:qs.get('fbclid'),fbc:getCookie('_fbc'),fbp:getCookie('_fbp')};
+  function getCookie(name){const m=document.cookie.match(new RegExp('(?:^|; )'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
+  function send(event){const payload={...params,event_name:event,event_id:crypto.randomUUID?crypto.randomUUID():String(Date.now())};fetch('/api/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{});}
+  send('page_view');
+  const join=document.getElementById('join');
+  // Set the actual channel invite URL in the channel configuration/admin workflow before launch.
+  join.addEventListener('click',function(e){e.preventDefault();send('join_click');alert('Abhi Telegram invite link configure nahi hua hai. Admin setup ke baad yahan link kaam karega.');});
+})();
+</script></body></html>
