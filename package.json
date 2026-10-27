@@ -1,0 +1,8 @@
+{
+  "name": "rana-ads-tracking",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Telegram channel tracking starter for Vercel + Supabase + Meta Conversions API",
+  "engines": { "node": ">=20" },
+  "dependencies": { "@supabase/supabase-js": "^2.57.0" }
+}
